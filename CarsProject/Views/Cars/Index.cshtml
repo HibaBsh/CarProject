@@ -1,0 +1,91 @@
+﻿@model CarsProject.Models.CarModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Cars List</h2>
+<br />
+<form>
+    <div class="form-group">
+        @Html.LabelFor(model => model.carfilter.Make) <br/>
+        @Html.TextBoxFor(model => model.carfilter.Make, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.carfilter.NumberOfDoors) <br />
+        @Html.TextBoxFor(model => model.carfilter.NumberOfDoors, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.carfilter.NumberOfCylinders) <br />
+        @Html.TextBoxFor(model => model.carfilter.NumberOfCylinders, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.carfilter.HorsePower) <br />
+        @Html.TextBoxFor(model => model.carfilter.HorsePower, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.carfilter.Price) <br />
+        @Html.TextBoxFor(model => model.carfilter.Price, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+
+    <div class="form-group" style="margin-left:250px ; margin-bottom:20px">
+        <button id="btnSubmit" class="btn btn-primary" formaction=@Url.Action("GetAllCarsbyfilter")>Filter</button>
+    </div>
+
+</form>
+
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.car.Make)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.car.NumOfDoors)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.car.BodyStyle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.car.EngineLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.car.NumberOfCylinders)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.car.HorsePower)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.car.Price)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.licars)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Make)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumOfDoors)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BodyStyle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EngineLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfCylinders)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HorsePower)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+
+        </tr>
+    }
+
+</table>
